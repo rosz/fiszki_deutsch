@@ -12,27 +12,15 @@ def create_dict(csv_file):
 
 
 def give_key():
-    words = create_dict('slowka.csv')
-    numbers = create_dict('liczebniki.csv')
-
     choose_dict = input("Które słowa chcesz przećwiczyć?\nliczebniki / ogólne\n")
 
-    while choose_dict == "liczebniki":
-        key = random.choice(list(numbers))
-        print("\n" + key)
-        value = input()
-        while value != numbers[key]:
-            print("jeszcze raz? t/n")
-            response = input()
-            if response == "t":
-                value = input()
-            elif response == "n":
-                print(key + " = " + numbers[key])
-                break
-            else:
-                break
+    words = {}
+    if choose_dict == "ogólne":
+        words = create_dict('slowka.csv')
+    elif choose_dict == "liczebniki":
+        words = create_dict('liczebniki.csv')
 
-    while choose_dict == "ogólne":
+    while words:
         key = random.choice(list(words))
         print("\n" + key)
         value = input()
